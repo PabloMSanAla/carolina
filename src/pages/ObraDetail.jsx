@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import PageTransition from '../components/PageTransition'
 import { obraBySlug, obras } from '../data/obras'
@@ -10,6 +10,39 @@ export default function ObraDetail() {
   const navigate = useNavigate()
   const obra = obraBySlug(slug)
   const [lightbox, setLightbox] = useState(null)
+
+  const handlePrev = () => {
+    const images = obra?.detalles && obra.detalles.length > 0 ? obra.detalles : (obra ? [obra.portada] : [])
+    const idx = images.indexOf(lightbox)
+    if (idx !== -1) {
+      const prevIdx = (idx - 1 + images.length) % images.length
+      setLightbox(images[prevIdx])
+    }
+  }
+
+  const handleNext = () => {
+    const images = obra?.detalles && obra.detalles.length > 0 ? obra.detalles : (obra ? [obra.portada] : [])
+    const idx = images.indexOf(lightbox)
+    if (idx !== -1) {
+      const nextIdx = (idx + 1) % images.length
+      setLightbox(images[nextIdx])
+    }
+  }
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!lightbox) return
+      if (e.key === 'ArrowLeft') {
+        handlePrev()
+      } else if (e.key === 'ArrowRight') {
+        handleNext()
+      } else if (e.key === 'Escape') {
+        setLightbox(null)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [lightbox, obra])
 
   if (!obra) {
     return (
@@ -55,11 +88,11 @@ export default function ObraDetail() {
             {/* Galería de detalles */}
             {obra.detalles && obra.detalles.length > 0 && (
               <div className={styles.detailGrid}>
-                {obra.detalles.map((src, i) => (
+                {obra.detalles.filter(src => src !== obra.portada).map((src, i) => (
                   <motion.img
                     key={src}
                     src={src}
-                    alt={`${obra.titulo} — detalle ${i + 1}`}
+                    alt={`${obra.titulo} — detalle ${i + 2}`}
                     loading="lazy"
                     className={styles.detailImg}
                     whileHover={{ scale: 1.03 }}
@@ -134,6 +167,26 @@ export default function ObraDetail() {
             <button className={styles.lbClose} onClick={() => setLightbox(null)}>
               Cerrar ✕
             </button>
+            
+            {obra.detalles && obra.detalles.length > 1 && (
+              <>
+                <button 
+                  className={styles.lbPrev} 
+                  onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+                  aria-label="Imagen anterior"
+                >
+                  ‹
+                </button>
+                <button 
+                  className={styles.lbNext} 
+                  onClick={(e) => { e.stopPropagation(); handleNext(); }}
+                  aria-label="Siguiente imagen"
+                >
+                  ›
+                </button>
+              </>
+            )}
+
             <motion.img
               src={lightbox}
               alt={obra.titulo}

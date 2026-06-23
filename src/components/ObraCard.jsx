@@ -14,7 +14,7 @@ export default function ObraCard({ obra, size = 'sq' }) {
     <Link to={`/obras/${obra.slug}`} className={styles.card}>
       <div className={`${styles.imgWrap} ${sizeClass}`}>
         <motion.img
-          src={obra.thumb || obra.portada}
+          src={obra.portada}
           alt={obra.titulo}
           loading="lazy"
           decoding="async"
