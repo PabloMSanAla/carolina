@@ -1,0 +1,101 @@
+.page {
+  padding: 10rem 3.5rem 6rem;
+  min-height: 100vh;
+  background: var(--stone);
+}
+
+.inner {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+  font-weight: 300;
+  line-height: 1.15;
+  margin: 0.5rem 0 1.2rem;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.sub {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3.5rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+  text-align: left;
+}
+
+.step {}
+
+.stepN {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--border);
+  margin-bottom: 0.5rem;
+}
+
+.stepName {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.stepTxt {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.inspiration {
+  max-width: 900px;
+  margin: 4rem auto 0;
+}
+
+.inspGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.inspGrid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .inspGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

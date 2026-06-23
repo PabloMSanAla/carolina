@@ -1,0 +1,119 @@
+.footer {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 3.5rem 3.5rem 2.5rem;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 0.7rem;
+}
+
+.desc {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 280px;
+}
+
+.colH {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.links {
+  list-style: none;
+}
+
+.links li {
+  margin-bottom: 0.6rem;
+}
+
+.links a,
+.links span {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: var(--text);
+}
+
+.bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copy {
+  font-size: 0.7rem;
+  color: var(--border);
+}
+
+.ig {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: 0.08em;
+}
+
+.ig:hover {
+  color: var(--text);
+}
+
+.ig svg {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2.5rem 1.5rem 2rem;
+  }
+
+  .top {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .top > div:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .top {
+    grid-template-columns: 1fr;
+  }
+
+  .bot {
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,33 @@
+.strip {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--white);
+}
+
+.inner {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+}
+
+.item {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 1.5rem;
+}
+
+.dot {
+  color: var(--accent);
+  font-size: 0.45rem;
+  vertical-align: middle;
+  margin-left: 1.5rem;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

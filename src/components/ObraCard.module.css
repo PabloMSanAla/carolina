@@ -1,0 +1,78 @@
+.card {
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  display: block;
+  transition: opacity 0.3s;
+}
+
+.imgWrap {
+  overflow: hidden;
+  background: var(--stone);
+  position: relative;
+}
+
+.imgWrap img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Size variants */
+.big   { aspect-ratio: 18 / 19; }
+.tall  { aspect-ratio: 3 / 4; }
+.sq    { aspect-ratio: 1 / 1; }
+.land  { aspect-ratio: 4 / 3; }
+
+.badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.92);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0.3rem 0.7rem;
+}
+
+.info {
+  padding: 0.85rem 0 0;
+}
+
+.name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tag {
+  font-size: 0.6rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sep {
+  font-size: 0.5rem;
+  color: var(--border);
+}
+
+.disp {
+  color: var(--accent);
+}
+
+.vend {
+  color: #c0b4a8;
+  text-decoration: line-through;
+}

@@ -1,0 +1,92 @@
+.page {
+  padding: 10rem 3.5rem 6rem;
+  min-height: 100vh;
+  background: var(--off);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.imgWrap {
+  position: relative;
+}
+
+.imgWrap img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+.accent {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: -1.5rem;
+  bottom: -1.5rem;
+  border: 1px solid var(--border);
+  z-index: -1;
+}
+
+.intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 1.8rem;
+}
+
+.body {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.95;
+}
+
+.body p + p {
+  margin-top: 1em;
+}
+
+.pills {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.pill {
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.pillHi {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .imgWrap {
+    max-width: 400px;
+  }
+}

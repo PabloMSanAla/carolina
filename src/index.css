@@ -1,0 +1,99 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --white: #ffffff;
+  --off: #faf9f7;
+  --stone: #f2efea;
+  --border: #e8e3dc;
+  --text: #2a2620;
+  --muted: #9a9389;
+  --accent: #b8956a;
+  --accent2: #8a7a6a;
+  --nav-h: 80px;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+/* ── Botones globales ── */
+.btn-dark {
+  background: var(--text);
+  color: var(--white);
+  padding: 0.85rem 2rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  font-family: 'Jost', sans-serif;
+}
+
+.btn-dark:hover {
+  background: var(--accent);
+}
+
+.btn-outline {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+  display: inline-block;
+}
+
+.btn-outline:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+/* ── Sección headings reutilizables ── */
+.sec-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 300;
+  color: var(--text);
+}
+
+/* ── Page transition wrapper ── */
+.page-wrapper {
+  padding-top: var(--nav-h);
+  min-height: calc(100vh - var(--nav-h));
+}

@@ -1,0 +1,251 @@
+.page {
+  padding: 3rem 3.5rem 5rem;
+  min-height: 100vh;
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3rem;
+}
+
+.breadcrumb a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+  color: var(--text);
+}
+
+.breadcrumb span:last-child {
+  color: var(--text);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: start;
+}
+
+.imgCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mainImg {
+  width: 100%;
+  object-fit: cover;
+  cursor: zoom-in;
+  display: block;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.detailImg {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  cursor: zoom-in;
+  display: block;
+}
+
+.infoCol {
+  position: sticky;
+  top: calc(var(--nav-h) + 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 3vw, 3rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text);
+  margin: 0.5rem 0 1rem;
+}
+
+.statusBadge {
+  display: inline-block;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.8rem;
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+
+.statusBadge[data-status="disp"] {
+  background: #f5f0e8;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.statusBadge[data-status="vend"] {
+  background: var(--stone);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 0.6rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+}
+
+.sep {
+  width: 2rem;
+  height: 1px;
+  background: var(--border);
+  margin: 1.5rem 0;
+}
+
+.desc {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.9;
+  white-space: pre-line;
+  margin-bottom: 2rem;
+}
+
+.ctaBtn {
+  display: block;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.encLink {
+  display: block;
+  text-align: center;
+}
+
+.notFound {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--muted);
+}
+
+/* Navegación entre obras */
+.obraNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.navLink {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: var(--text);
+}
+
+.navCenter {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Lightbox */
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(250, 249, 247, 0.97);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lb img {
+  max-width: 88vw;
+  max-height: 88vh;
+  object-fit: contain;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.08);
+}
+
+.lbClose {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-family: 'Jost', sans-serif;
+  transition: color 0.2s;
+}
+
+.lbClose:hover {
+  color: var(--text);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .page {
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .main {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .infoCol {
+    position: static;
+  }
+
+  .detailGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .detailGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
