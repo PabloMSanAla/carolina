@@ -6,6 +6,7 @@ import Marquee from '../components/Marquee'
 import ObraCard from '../components/ObraCard'
 import { obras } from '../data/obras'
 import styles from './Home.module.css'
+import { getAssetUrl } from '../utils/paths'
 
 const featured = obras.filter(o =>
   ['irrupcion', 'olas-de-lava', 'margenes-de-nieve', 'marismas', 'horizonte-dorado', 'estratos-de-arena'].includes(o.slug)
@@ -38,7 +39,7 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <motion.img
-            src="/images/obras/irrupcion/detalles/1.png"
+            src={getAssetUrl('/images/obras/irrupcion/detalles/1.png')}
             alt="Irrupción — Carolina Peñacoba"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.8 }}
@@ -104,7 +105,7 @@ export default function Home() {
         <div className={styles.sobreGrid}>
           <div className={styles.sobreImgWrap}>
             <img
-              src="/images/obras/margenes-de-nieve/detalles/1.png"
+              src={getAssetUrl('/images/obras/margenes-de-nieve/detalles/1.png')}
               alt="Carolina Peñacoba — detalle de obra en el estudio"
             />
             <div className={styles.sobreAccent} />

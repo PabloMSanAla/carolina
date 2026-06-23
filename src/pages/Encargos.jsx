@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import PageTransition from '../components/PageTransition'
 import styles from './Encargos.module.css'
+import { getAssetUrl } from '../utils/paths'
 
 export default function Encargos() {
   return (
@@ -51,7 +52,7 @@ export default function Encargos() {
               '/images/obras/margenes-de-nieve/thumb.webp',
               '/images/obras/horizonte-dorado/thumb.webp',
             ].map((src, i) => (
-              <img key={i} src={src} alt={`Ejemplo de encargo ${i + 1}`} loading="lazy" />
+              <img key={i} src={getAssetUrl(src)} alt={`Ejemplo de encargo ${i + 1}`} loading="lazy" />
             ))}
           </div>
         </div>

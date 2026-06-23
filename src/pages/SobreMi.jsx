@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import PageTransition from '../components/PageTransition'
 import styles from './SobreMi.module.css'
+import { getAssetUrl } from '../utils/paths'
 
 export default function SobreMi() {
   return (
@@ -9,7 +10,7 @@ export default function SobreMi() {
         <div className={styles.grid}>
           <div className={styles.imgWrap}>
             <img
-              src="/images/obras/Carolina_portrait.png"
+              src={getAssetUrl('/images/obras/Carolina_portrait.png')}
               alt="Carolina Peñacoba — artista"
             />
             <div className={styles.accent} />

@@ -1,9 +1,6 @@
-/**
- * Catálogo completo de obras de Carolina Peñacoba.
- * Las imágenes se sirven desde /public/images/obras/[slug]/
- */
+import { getAssetUrl } from '../utils/paths'
 
-export const obras = [
+const rawObras = [
   {
     slug: 'irrupcion',
     titulo: 'Irrupción',
@@ -141,5 +138,12 @@ La pieza transmite movimiento sin estridencias, evocando paisajes primigenios en
     tags: ['Acrílico', 'Texturas', 'Díptico'],
   },
 ]
+
+export const obras = rawObras.map(obra => ({
+  ...obra,
+  portada: getAssetUrl(obra.portada),
+  thumb: getAssetUrl(obra.thumb),
+  detalles: obra.detalles ? obra.detalles.map(getAssetUrl) : []
+}))
 
 export const obraBySlug = (slug) => obras.find(o => o.slug === slug)
