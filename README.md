@@ -100,7 +100,6 @@ Para GitHub Pages añade `base: '/nombre-repo/'` en `vite.config.js`.
 Para Vercel/Netlify no requiere ningún cambio adicional.
 
 ## Deployment Instructions
-
 ### GitHub Pages
 1. Push changes to the main branch of your repository
 2. Deploy the project using gh-pages
