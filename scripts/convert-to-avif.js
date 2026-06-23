@@ -33,7 +33,7 @@ for (const slug of slugs) {
       const originalSize = statSync(srcPath).size
       const avifSize = statSync(destPath).size
       console.log(`  ✓ Created ${destName} (${(avifSize / 1024).toFixed(0)} KB vs ${(originalSize / 1024).toFixed(0)} KB PNG, ratio: ${((avifSize / originalSize) * 100).toFixed(1)}%)`)
-      
+
       // Delete the original PNG file
       unlinkSync(srcPath)
       console.log(`  🗑 Deleted original ${file}`)
@@ -54,11 +54,11 @@ if (existsSync(portraitSrc)) {
     await sharp(portraitSrc)
       .avif({ quality: 75 })
       .toFile(portraitDest)
-    
+
     const originalSize = statSync(portraitSrc).size
     const avifSize = statSync(portraitDest).size
     console.log(`  ✓ Created Carolina_portrait.avif (${(avifSize / 1024).toFixed(0)} KB vs ${(originalSize / 1024).toFixed(0)} KB PNG, ratio: ${((avifSize / originalSize) * 100).toFixed(1)}%)`)
-    
+
     unlinkSync(portraitSrc)
     console.log(`  🗑 Deleted original Carolina_portrait.png`)
     ok++

@@ -88,9 +88,21 @@ npm run preview    # previsualiza el build
 
 ## Añadir una nueva obra
 
-1. Crea `public/images/obras/<slug>/portada.png` y `public/images/obras/<slug>/detalles/1.png…`
-2. Añade la entrada en `src/data/obras.js` siguiendo la misma estructura que las existentes.
-3. La ruta `/obras/<slug>` se genera automáticamente.
+1. **Añadir las imágenes**:
+   Crea la carpeta `public/images/obras/<slug>/detalles/` y guarda tus imágenes de alta resolución en formato **PNG** nombradas secuencialmente: `1.png`, `2.png`, `3.png`, etc. (donde `1.png` será la portada).
+2. **Generar la miniatura (Thumbnail)**:
+   Ejecuta el script para generar la miniatura optimizada en WebP a partir de `1.png`:
+   ```bash
+   node scripts/generate-thumbs.js
+   ```
+3. **Convertir las imágenes a AVIF**:
+   Ejecuta el script de optimización para convertir las imágenes de detalle a AVIF y eliminar los archivos PNG originales de forma automática:
+   ```bash
+   node scripts/convert-to-avif.js
+   ```
+4. **Registrar la obra**:
+   Añade la entrada correspondiente en `src/data/obras.js` siguiendo la misma estructura que las existentes (utilizando las extensiones `.avif` y `.webp` generadas).
+   La ruta `/obras/<slug>` se generará automáticamente.
 
 ## Despliegue
 
