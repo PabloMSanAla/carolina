@@ -98,3 +98,13 @@ Compatible con **Vercel**, **Netlify** y **GitHub Pages**.
 
 Para GitHub Pages añade `base: '/nombre-repo/'` en `vite.config.js`.  
 Para Vercel/Netlify no requiere ningún cambio adicional.
+
+## Deployment Instructions
+
+### GitHub Pages
+1. Push changes to the main branch of your repository
+2. Deploy the project using gh-pages
+```bash
+    npm run deploy
+```
+3. Changes will be live at https://pablomsanala.github.io within a few minutes
