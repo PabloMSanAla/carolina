@@ -10,7 +10,7 @@ export default function SobreMi() {
         <div className={styles.grid}>
           <div className={styles.imgWrap}>
             <img
-              src={getAssetUrl('/images/obras/Carolina_portrait.png')}
+              src={getAssetUrl('/images/obras/Carolina_portrait.avif')}
               alt="Carolina Peñacoba — artista"
             />
             <div className={styles.accent} />
