@@ -39,7 +39,7 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <motion.img
-            src={getAssetUrl('/images/obras/irrupcion/detalles/1.png')}
+            src={getAssetUrl('/images/obras/irrupcion/detalles/1.avif')}
             alt="Irrupción — Carolina Peñacoba"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.8 }}
@@ -105,7 +105,7 @@ export default function Home() {
         <div className={styles.sobreGrid}>
           <div className={styles.sobreImgWrap}>
             <img
-              src={getAssetUrl('/images/obras/margenes-de-nieve/detalles/1.png')}
+              src={getAssetUrl('/images/obras/margenes-de-nieve/detalles/1.avif')}
               alt="Carolina Peñacoba — detalle de obra en el estudio"
             />
             <div className={styles.sobreAccent} />

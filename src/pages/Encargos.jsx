@@ -47,10 +47,10 @@ export default function Encargos() {
           <p className="sec-eyebrow" style={{ marginBottom: '2rem' }}>Inspiración</p>
           <div className={styles.inspGrid}>
             {[
-              '/images/obras/irrupcion/detalles/1.png',
-              '/images/obras/estratos-de-arena/detalles/1.png',
-              '/images/obras/margenes-de-nieve/detalles/1.png',
-              '/images/obras/horizonte-dorado/detalles/1.png',
+              '/images/obras/irrupcion/detalles/1.avif',
+              '/images/obras/estratos-de-arena/detalles/1.avif',
+              '/images/obras/margenes-de-nieve/detalles/1.avif',
+              '/images/obras/horizonte-dorado/detalles/1.avif',
             ].map((src, i) => (
               <img key={i} src={getAssetUrl(src)} alt={`Ejemplo de encargo ${i + 1}`} loading="lazy" />
             ))}
