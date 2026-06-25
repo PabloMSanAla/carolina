@@ -4,19 +4,40 @@ import styles from './Contacto.module.css'
 
 export default function Contacto() {
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
   const [form, setForm] = useState({ nombre: '', apellido: '', email: '', mensaje: '' })
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    // mailto fallback — replace with your backend/Formspree endpoint as needed
-    const subject = encodeURIComponent('Consulta desde la web')
-    const body = encodeURIComponent(
-      `Nombre: ${form.nombre} ${form.apellido}\nEmail: ${form.email}\n\n${form.mensaje}`
-    )
-    window.location.href = `mailto:estudiodecarolina@gmail.com?subject=${subject}&body=${body}`
-    setSent(true)
+    setLoading(true)
+    setError(false)
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/estudiodecarolina@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          Nombre: `${form.nombre} ${form.apellido}`,
+          Email: form.email,
+          Mensaje: form.mensaje
+        })
+      })
+      if (response.ok) {
+        setSent(true)
+      } else {
+        setError(true)
+      }
+    } catch (err) {
+      setError(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -88,7 +109,14 @@ export default function Contacto() {
                     value={form.mensaje} onChange={handleChange}
                   />
                 </div>
-                <button type="submit" className="btn-dark">Enviar</button>
+                {error && (
+                  <p className={styles.errorMsg}>
+                    Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo o escríbeme directamente por email.
+                  </p>
+                )}
+                <button type="submit" className="btn-dark" disabled={loading}>
+                  {loading ? 'Enviando...' : 'Enviar'}
+                </button>
               </form>
             )}
           </div>

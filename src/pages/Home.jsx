@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import PageTransition from '../components/PageTransition'
-import Marquee from '../components/Marquee'
 import ObraCard from '../components/ObraCard'
 import { obras } from '../data/obras'
 import styles from './Home.module.css'
@@ -51,8 +50,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ── MARQUEE ── */}
-      <Marquee />
+
 
       {/* ── GALERÍA DESTACADA ── */}
       <section className={styles.gallery}>
