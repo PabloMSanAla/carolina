@@ -6,9 +6,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/compile-obras.js && vite build",
     "preview": "vite preview",
     "thumbs": "node scripts/generate-thumbs.js",
+    "optimize": "node scripts/optimize-images.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

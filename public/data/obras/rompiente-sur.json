@@ -1,0 +1,21 @@
+{
+  "slug": "rompiente-sur",
+  "titulo": "Rompiente Sur",
+  "tecnica": "Acrílico y texturas",
+  "status": "vend",
+  "portada": "/images/obras/rompiente-sur/detalles/1.avif",
+  "thumb": "/images/obras/rompiente-sur/thumb.webp",
+  "detalles": [
+    "/images/obras/rompiente-sur/detalles/1.avif",
+    "/images/obras/rompiente-sur/detalles/2.avif",
+    "/images/obras/rompiente-sur/detalles/3.avif",
+    "/images/obras/rompiente-sur/detalles/4.avif",
+    "/images/obras/rompiente-sur/detalles/5.avif"
+  ],
+  "descripcion": "Este cuadro construye un diálogo entre color, materia y luz a través de una composición horizontal y matizada. Los tonos neutros se combinan con acentos azules para generar una atmósfera envolvente y elegante, ideal para interiores que buscan calma visual sin renunciar a la presencia artística.",
+  "tags": [
+    "Acrílico",
+    "Texturas"
+  ],
+  "date": "2026-06-30"
+}

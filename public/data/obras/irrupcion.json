@@ -1,0 +1,22 @@
+{
+  "slug": "irrupcion",
+  "titulo": "Irrupción",
+  "tecnica": "Acrílico y texturas",
+  "status": "disp",
+  "portada": "/images/obras/irrupcion/detalles/1.avif",
+  "thumb": "/images/obras/irrupcion/thumb.webp",
+  "detalles": [
+    "/images/obras/irrupcion/detalles/1.avif",
+    "/images/obras/irrupcion/detalles/2.avif",
+    "/images/obras/irrupcion/detalles/3.avif",
+    "/images/obras/irrupcion/detalles/4.avif",
+    "/images/obras/irrupcion/detalles/5.avif",
+    "/images/obras/irrupcion/detalles/6.avif"
+  ],
+  "descripcion": "Esta obra abstracta explora el equilibrio entre materia y movimiento a través de una composición central cargada de textura y gesto. Sobre una base de tonos neutros y veladuras suaves, emergen capas densas de pigmento en rojos profundos, ocres y matices terrosos, aplicados con intensidad casi escultórica. La pintura parece oscilar entre la contención del fondo y la energía concentrada del núcleo, generando una sensación de tensión y profundidad.\n\nEl uso de materiales y empastes crea relieve, invita a acercarse y descubrir detalles, trazos y transparencias que cambian con la luz. Es una pieza que no busca ser descrita de forma literal, sino sentida: un espacio abierto a la interpretación, donde cada mirada encuentra su propio significado.",
+  "tags": [
+    "Acrílico",
+    "Texturas"
+  ],
+  "date": "2026-06-30"
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "las-marinas",
+  "titulo": "Las Marinas",
+  "tecnica": "Acrílico y texturas",
+  "status": "vend",
+  "portada": "/images/obras/las-marinas/detalles/1.avif",
+  "thumb": "/images/obras/las-marinas/thumb.webp",
+  "detalles": [
+    "/images/obras/las-marinas/detalles/1.avif",
+    "/images/obras/las-marinas/detalles/2.avif",
+    "/images/obras/las-marinas/detalles/3.avif",
+    "/images/obras/las-marinas/detalles/4.avif",
+    "/images/obras/las-marinas/detalles/5.avif"
+  ],
+  "descripcion": "Díptico sobre lienzo de doble fondo de 100×100 y 100×100. Los azules y blancos son los protagonistas de esta obra en acrílicos en la que cada pincelada evoca al mar, la tierra y la espuma de las olas. Las texturas y el dorado aportan relieve y personalidad al conjunto. Una obra que invita a perderse en el horizonte lejano.",
+  "tags": [
+    "Acrílico",
+    "Texturas",
+    "Díptico"
+  ],
+  "date": "2026-06-30"
+}

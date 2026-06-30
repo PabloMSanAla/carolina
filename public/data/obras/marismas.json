@@ -1,0 +1,22 @@
+{
+  "slug": "marismas",
+  "titulo": "Marismas",
+  "tecnica": "Acrílico y texturas",
+  "status": "disp",
+  "portada": "/images/obras/marismas/detalles/1.avif",
+  "thumb": "/images/obras/marismas/thumb.webp",
+  "detalles": [
+    "/images/obras/marismas/detalles/1.avif",
+    "/images/obras/marismas/detalles/2.avif",
+    "/images/obras/marismas/detalles/3.avif",
+    "/images/obras/marismas/detalles/4.avif",
+    "/images/obras/marismas/detalles/5.avif"
+  ],
+  "descripcion": "Dos lienzos que trabajan la horizontalidad y la textura como eje central. La paleta de azules, veladuras y acentos cálidos aporta ritmo y profundidad, construyendo un paisaje abstracto con presencia y personalidad, pensado para transformar el espacio con sutileza y carácter.",
+  "tags": [
+    "Acrílico",
+    "Texturas",
+    "Díptico"
+  ],
+  "date": "2026-06-30"
+}
