@@ -1,0 +1,22 @@
+{
+  "slug": "orillas",
+  "titulo": "Orillas",
+  "tecnica": "Acrílico y texturas",
+  "status": "disp",
+  "portada": "/images/obras/orillas/detalles/1.avif",
+  "thumb": "/images/obras/orillas/thumb.webp",
+  "detalles": [
+    "/images/obras/orillas/detalles/1.avif",
+    "/images/obras/orillas/detalles/2.avif",
+    "/images/obras/orillas/detalles/3.avif",
+    "/images/obras/orillas/detalles/4.avif",
+    "/images/obras/orillas/detalles/5.avif",
+    "/images/obras/orillas/detalles/6.avif"
+  ],
+  "descripcion": "Una composición abstracta donde la luz y la textura dialogan en tonos cálidos y neutros. Una pieza pensada para vestir el espacio con elegancia, crear atmósferas acogedoras y conectar con una estética natural y atemporal.",
+  "tags": [
+    "Acrílico",
+    "Texturas"
+  ],
+  "date": "2026-06-30"
+}

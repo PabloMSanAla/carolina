@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: pablomsanala/carolina
+  branch: main
+  # If using Decap CMS, deploy an OAuth proxy (Vercel, Cloudflare, etc.) and paste its URL below.
+  # If using Sveltia CMS, you can comment this out or leave it, as it defaults to Sveltia's built-in auth.
+  base_url: https://your-oauth-proxy-url.vercel.app
+
+media_folder: "public/images/obras"
+public_folder: "/images/obras"
+
+collections:
+  - name: "obras"
+    label: "Colección Obras"
+    folder: "public/data/obras"
+    create: true
+    slug: "{{slug}}"
+    format: "json"
+    fields:
+      - { label: "Título", name: "titulo", widget: "string" }
+      - { label: "Slug (nombre de URL, ej. 'rompiente-sur')", name: "slug", widget: "string" }
+      - { label: "Técnica", name: "tecnica", widget: "string", default: "Acrílico y texturas" }
+      - { label: "Disponible (Status)", name: "status", widget: "select", options: [{ label: "Disponible", value: "disp" }, { label: "Vendido", value: "vend" }] }
+      - { label: "Portada (Imagen Principal)", name: "portada", widget: "image" }
+      - { label: "Miniatura (Thumb)", name: "thumb", widget: "image", required: false }
+      - { label: "Imágenes de Detalles", name: "detalles", widget: "list", field: { label: "Imagen", name: "imagen", widget: "image" }, required: false }
+      - { label: "Descripción", name: "descripcion", widget: "text" }
+      - { label: "Tags", name: "tags", widget: "list", field: { label: "Tag", name: "tag", widget: "string" }, required: false }
+      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD", required: false }

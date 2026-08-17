@@ -1,0 +1,23 @@
+{
+  "slug": "tramontana",
+  "titulo": "Tramontana",
+  "tecnica": "Acrílico y texturas",
+  "status": "vend",
+  "portada": "/images/obras/tramontana/detalles/1.avif",
+  "thumb": "/images/obras/tramontana/thumb.webp",
+  "detalles": [
+    "/images/obras/tramontana/detalles/1.avif",
+    "/images/obras/tramontana/detalles/2.avif",
+    "/images/obras/tramontana/detalles/3.avif",
+    "/images/obras/tramontana/detalles/4.avif",
+    "/images/obras/tramontana/detalles/5.avif",
+    "/images/obras/tramontana/detalles/6.avif"
+  ],
+  "descripcion": "Un tríptico que se despliega como un paisaje en calma, donde las capas de color y textura fluyen de una pieza a otra. Tonos arena, marfil y matices cálidos se combinan para crear una sensación de amplitud, equilibrio y serenidad. Una obra pensada para envolver el espacio con armonía y luz.",
+  "tags": [
+    "Acrílico",
+    "Texturas",
+    "Tríptico"
+  ],
+  "date": "2026-06-30"
+}

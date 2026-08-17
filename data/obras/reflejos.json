@@ -1,0 +1,21 @@
+{
+  "slug": "reflejos",
+  "titulo": "Reflejos",
+  "tecnica": "Acrílico y texturas",
+  "status": "vend",
+  "portada": "/images/obras/reflejos/detalles/1.avif",
+  "thumb": "/images/obras/reflejos/thumb.webp",
+  "detalles": [
+    "/images/obras/reflejos/detalles/1.avif",
+    "/images/obras/reflejos/detalles/2.avif",
+    "/images/obras/reflejos/detalles/3.avif",
+    "/images/obras/reflejos/detalles/4.avif",
+    "/images/obras/reflejos/detalles/5.avif"
+  ],
+  "descripcion": "Rojos vibrantes y tonos caldero contrastan con los colores mostaza y blancos. Las texturas y las pinceladas oscuras centran la atención en el centro de la obra. Acrílico sobre lienzo de doble fondo de 100×140.",
+  "tags": [
+    "Acrílico",
+    "Texturas"
+  ],
+  "date": "2026-06-30"
+}
