@@ -1,4 +1,4 @@
-name: Optimize Images
+name: Optimize and Deploy
 
 on:
   push:
@@ -6,13 +6,14 @@ on:
       - main
     paths:
       - 'public/images/obras/**'
+      - 'public/data/obras/**'
       - 'public/data/obras.json'
 
 permissions:
   contents: write
 
 jobs:
-  optimize-images:
+  optimize-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,14 +30,24 @@ jobs:
         run: |
           npm ci || npm install
 
-      - name: Run image optimization
+      - name: Run image optimization and compilation
         run: |
           npm run optimize
 
-      - name: Commit and push changes
+      - name: Commit and push changes back to main
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: optimize uploaded images to AVIF and update database [skip ci]"
+          commit_message: "chore: optimize uploaded images, generate thumbnails, and compile database [skip ci]"
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
           commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+
+      - name: Build website
+        run: |
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist

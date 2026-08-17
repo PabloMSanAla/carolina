@@ -86,36 +86,47 @@ npm run build      # genera dist/
 npm run preview    # previsualiza el build
 ```
 
-## Añadir una nueva obra
+## Gestión de Contenido con CMS (Sveltia/Decap CMS)
 
-1. **Añadir las imágenes**:
-   Crea la carpeta `public/images/obras/<slug>/detalles/` y guarda tus imágenes de alta resolución en formato **PNG** nombradas secuencialmente: `1.png`, `2.png`, `3.png`, etc. (donde `1.png` será la portada).
-2. **Generar la miniatura (Thumbnail)**:
-   Ejecuta el script para generar la miniatura optimizada en WebP a partir de `1.png`:
-   ```bash
-   node scripts/generate-thumbs.js
-   ```
-3. **Convertir las imágenes a AVIF**:
-   Ejecuta el script de optimización para convertir las imágenes de detalle a AVIF y eliminar los archivos PNG originales de forma automática:
-   ```bash
-   node scripts/convert-to-avif.js
-   ```
-4. **Registrar la obra**:
-   Añade la entrada correspondiente en `src/data/obras.js` siguiendo la misma estructura que las existentes (utilizando las extensiones `.avif` y `.webp` generadas).
-   La ruta `/obras/<slug>` se generará automáticamente.
+La web cuenta con un gestor de contenidos git-based que permite a la artista añadir, editar o eliminar obras de forma completamente visual y automática sin necesidad de tocar código.
 
-## Despliegue
+### Cómo actualizar la web a través del CMS:
 
-Compatible con **Vercel**, **Netlify** y **GitHub Pages**.
+1. **Accede al Panel de Control**:
+   - **En producción**: Abre `https://pablomsanala.github.io/carolina/admin/` en tu navegador.
+   - **En local**: Ejecuta `npm run dev` y abre `http://localhost:5173/carolina/admin/`.
+2. **Identificación**:
+   - En producción: Haz clic en **Log in with GitHub** y autoriza tu cuenta.
+   - En local: Haz clic en **Work with Local Folder**, selecciona la carpeta raíz del repositorio en tu ordenador y concede permisos de edición al navegador.
+3. **Añadir o Editar una Obra**:
+   - En la barra lateral izquierda, selecciona **Colección Obras**.
+   - Haz clic en **Nuevo Obras** (para añadir una nueva) o selecciona una obra existente de la lista para editarla.
+   - Completa la información:
+     - **Título**: Nombre de la obra.
+     - **Slug**: Identificador único en la URL (ej. `rompiente-sur`).
+     - **Técnica**: Técnica empleada (por defecto `Acrílico y texturas`).
+     - **Disponible (Status)**: Selecciona `Disponible` o `Vendido`.
+     - **Portada (Imagen Principal)**: Sube tu imagen en formato estándar (`.jpg`, `.jpeg` o `.png`).
+     - **Imágenes de Detalles**: Sube fotos adicionales de detalles.
+     - **Descripción**: Descripción de la obra.
+     - **Tags**: Palabras clave (por defecto `Acrílico`, `Texturas`).
+     - **Fecha**: Fecha de registro.
+   - Haz clic en **Publish** (Publicar) en la esquina superior derecha.
 
-Para GitHub Pages añade `base: '/nombre-repo/'` en `vite.config.js`.  
-Para Vercel/Netlify no requiere ningún cambio adicional.
+---
 
-## Deployment Instructions
-### GitHub Pages
-1. Push changes to the main branch of your repository
-2. Deploy the project using gh-pages
-```bash
-    npm run deploy
-```
-3. Changes will be live at https://pablomsanala.github.io within a few minutes
+### ¿Qué ocurre por detrás? (Flujo de Automatización)
+
+Una vez que haces clic en **Publish** en el CMS, se activa de forma automática el siguiente pipeline:
+
+1. **Actualización del Repositorio**:
+   - Sveltia CMS sube las imágenes originales tal cual las has subido y crea un archivo individual en `public/data/obras/[slug].json` con los metadatos de la nueva obra, realizando un `commit` y un `push` a la rama `main` de tu repositorio de GitHub.
+2. **Optimización Automática (GitHub Actions)**:
+   - El push activa el workflow de GitHub Actions (`.github/workflows/optimize-and-deploy.yml`), que realiza los siguientes pasos en la nube:
+     - **Conversión AVIF**: Convierte de forma automática las imágenes subidas (`.jpg`, `.jpeg`, o `.png`) al formato comprimido de última generación **AVIF** para ahorrar espacio, y elimina los archivos PNG/JPG originales.
+     - **Generación de Miniaturas**: Genera automáticamente una miniatura optimizada en formato **WebP** de 700px de ancho a partir de la imagen de portada.
+     - **Actualización de Base de Datos**: Actualiza todas las referencias de las imágenes en tu archivo JSON del CMS para que apunten a los archivos `.avif` y `-thumb.webp` generados.
+     - **Compilación de Catálogo**: Ejecuta un script para recopilar y ordenar todos los JSON individuales de la carpeta `public/data/obras/` en el archivo maestro unificado `public/data/obras.json` utilizado por la web.
+     - **Confirmación de Cambios**: Vuelve a confirmar (`commit` y `push`) de forma automática estos archivos optimizados a la rama `main`.
+3. **Despliegue Automático**:
+   - Finalmente, el workflow compila el proyecto React (`npm run build`) y publica la versión final en la rama `gh-pages`, actualizando la página web en producción en pocos minutos de forma transparente.
