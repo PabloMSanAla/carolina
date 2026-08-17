@@ -3,12 +3,15 @@
   "slug": "testing",
   "tecnica": "Acrílico y texturas",
   "status": "disp",
-  "portada": "/images/obras/WesAnderson-ColorReference.avif",
-  "thumb": "/images/obras/WesAnderson-ColorReference.avif",
+  "portada": "/images/obras/testing/WesAnderson-ColorReference.avif",
+  "thumb": "/images/obras/testing/WesAnderson-ColorReference-thumb.webp",
   "detalles": [
-    "/images/obras/WesAnderson-ColorReference.avif"
+    "/images/obras/testing/WesAnderson-ColorReference.avif"
   ],
   "descripcion": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchange",
-  "tags": [],
-  "date": "2026-08-16"
+  "tags": [
+    "Acrílico",
+    "Texturas"
+  ],
+  "date": "2026-08-16T23:15:00Z"
 }

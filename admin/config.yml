@@ -14,7 +14,9 @@ collections:
     label: "Colección Obras"
     folder: "public/data/obras"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
+    media_folder: "public/images/obras/{{fields.slug}}"
+    public_folder: "/images/obras/{{fields.slug}}"
     format: "json"
     fields:
       - { label: "Título", name: "titulo", widget: "string" }
@@ -26,4 +28,4 @@ collections:
       - { label: "Imágenes de Detalles", name: "detalles", widget: "list", field: { label: "Imagen", name: "imagen", widget: "image" }, required: false }
       - { label: "Descripción", name: "descripcion", widget: "text" }
       - { label: "Tags", name: "tags", widget: "list", field: { label: "Tag", name: "tag", widget: "string" }, required: false }
-      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD", required: false }
+      - { label: "Fecha y hora", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ", date_format: "YYYY-MM-DD", time_format: "HH:mm", required: false }
