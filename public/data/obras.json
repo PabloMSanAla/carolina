@@ -1,5 +1,20 @@
 [
   {
+    "titulo": "new testing",
+    "slug": "new-testing",
+    "tecnica": "Acrílico y texturas",
+    "status": "disp",
+    "portada": "https://picsum.photos/id/823/1920/1280.webp",
+    "thumb": "",
+    "detalles": [
+      "https://picsum.photos/id/828/1920/1280.webp",
+      "https://picsum.photos/id/962/1920/1280.webp"
+    ],
+    "descripcion": "Lorem ipsum is standard placeholder text used in design and web development. It lets people look at layout, fonts, and structure without getting distracted by readable words. The text comes from a scrambled Latin work by Cicero, but it has no real meaning",
+    "tags": [],
+    "date": "2026-08-16T23:35:00-07:00"
+  },
+  {
     "slug": "irrupcion",
     "titulo": "Irrupción",
     "tecnica": "Acrílico y texturas",
