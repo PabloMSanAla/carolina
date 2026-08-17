@@ -1,6 +1,6 @@
 import sharp from 'sharp'
-import { readdirSync, statSync, existsSync, readFileSync, writeFileSync, unlinkSync } from 'fs'
-import { join, resolve, extname, relative } from 'path'
+import { readdirSync, statSync, existsSync, readFileSync, writeFileSync, unlinkSync, mkdirSync } from 'fs'
+import { join, resolve, extname, relative, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { execSync } from 'child_process'
 
@@ -94,6 +94,9 @@ async function generateThumbnails() {
         const thumbFullPath = join(ROOT_DIR, 'public', targetThumbRelative)
 
         console.log(`  📸 Generating thumbnail for "${data.titulo}" from ${portada}`)
+
+        // Ensure parent directory exists
+        mkdirSync(dirname(thumbFullPath), { recursive: true })
 
         await sharp(portadaFullPath)
           .resize({ width: 700, withoutEnlargement: true })

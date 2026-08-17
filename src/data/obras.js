@@ -13,6 +13,13 @@ try {
   console.error('Failed to load obras.json. Dynamic gallery might be empty.', err)
 }
 
+// Ensure obras are always sorted by date / time descending (newest first)
+rawObras.sort((a, b) => {
+  const timeA = a.date ? new Date(a.date).getTime() : 0
+  const timeB = b.date ? new Date(b.date).getTime() : 0
+  return timeB - timeA
+})
+
 export const obras = rawObras.map(obra => ({
   ...obra,
   portada: getAssetUrl(obra.portada),

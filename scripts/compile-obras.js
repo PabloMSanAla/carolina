@@ -42,21 +42,25 @@ function compileObras() {
     }
   }
 
-  // Sort: Preserved order first, new items prepended
+  // Sort by date / timestamp descending (newest first)
   obras.sort((a, b) => {
+    const timeA = a.date ? new Date(a.date).getTime() : 0
+    const timeB = b.date ? new Date(b.date).getTime() : 0
+
+    if (timeB !== timeA) {
+      return timeB - timeA // Newer dates appear first
+    }
+
+    // Tiebreaker for identical dates: use preserved legacy order if present
     const idxA = PRESERVED_ORDER.indexOf(a.slug)
     const idxB = PRESERVED_ORDER.indexOf(b.slug)
 
     if (idxA !== -1 && idxB !== -1) {
       return idxA - idxB
     }
-    if (idxA !== -1) return 1 // a is old, b is new -> b comes first
-    if (idxB !== -1) return -1 // b is old, a is new -> a comes first
+    if (idxA !== -1) return 1
+    if (idxB !== -1) return -1
 
-    // Both are new -> sort by date descending, fallback to title
-    const dateA = new Date(a.date || 0)
-    const dateB = new Date(b.date || 0)
-    if (dateA !== dateB) return dateB - dateA
     return (a.titulo || '').localeCompare(b.titulo || '')
   })
 
