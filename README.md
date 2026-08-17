@@ -27,11 +27,18 @@ Portfolio web para [Carolina Peñacoba](https://estudiodecarolina.com), pintora 
 ```
 carolina/
 ├── public/
+│   ├── admin/                  # Panel de control CMS (Sveltia / Decap)
+│   │   ├── index.html
+│   │   └── config.yml
+│   ├── data/
+│   │   ├── obras/              # Archivos individuales JSON por obra (CMS)
+│   │   │   └── [slug].json
+│   │   └── obras.json          # Base de datos maestra compilada para la web
 │   └── images/obras/           # Imágenes locales servidas estáticamente
-│       └── [slug]/
-│           ├── portada.png
-│           └── detalles/
-│               └── 1.png … n.png
+│       └── [slug]/ o [nombre].avif
+├── scripts/
+│   ├── compile-obras.js        # Compila los JSON individuales en obras.json
+│   └── optimize-images.js      # Optimiza imágenes a AVIF, crea miniaturas y compila
 └── src/
     ├── main.jsx                # Entry point
     ├── App.jsx                 # Router + AnimatePresence
@@ -52,7 +59,7 @@ carolina/
     │   ├── Contacto.jsx
     │   └── NotFound.jsx
     └── data/
-        └── obras.js            # Catálogo completo — añadir obras aquí
+        └── obras.js            # Carga y procesa dinámicamente obras.json
 ```
 
 ## Obras incluidas
@@ -82,51 +89,63 @@ npm run dev        # http://localhost:5173
 ## Build para producción
 
 ```bash
-npm run build      # genera dist/
+npm run build      # compila obras y genera dist/
 npm run preview    # previsualiza el build
 ```
 
-## Gestión de Contenido con CMS (Sveltia/Decap CMS)
+## Añadir una nueva obra
 
-La web cuenta con un gestor de contenidos git-based que permite a la artista añadir, editar o eliminar obras de forma completamente visual y automática sin necesidad de tocar código.
+### Método 1: A través del CMS (Recomendado)
 
-### Cómo actualizar la web a través del CMS:
+La web cuenta con **Sveltia CMS** integrado, lo que permite a la artista añadir, modificar o eliminar obras desde un panel visual sin necesidad de editar código ni optimizar imágenes a mano.
 
-1. **Accede al Panel de Control**:
-   - **En producción**: Abre `https://pablomsanala.github.io/carolina/admin/` en tu navegador.
-   - **En local**: Ejecuta `npm run dev` y abre `http://localhost:5173/carolina/admin/`.
-2. **Identificación**:
-   - En producción: Haz clic en **Log in with GitHub** y autoriza tu cuenta.
-   - En local: Haz clic en **Work with Local Folder**, selecciona la carpeta raíz del repositorio en tu ordenador y concede permisos de edición al navegador.
-3. **Añadir o Editar una Obra**:
-   - En la barra lateral izquierda, selecciona **Colección Obras**.
-   - Haz clic en **Nuevo Obras** (para añadir una nueva) o selecciona una obra existente de la lista para editarla.
-   - Completa la información:
-     - **Título**: Nombre de la obra.
-     - **Slug**: Identificador único en la URL (ej. `rompiente-sur`).
-     - **Técnica**: Técnica empleada (por defecto `Acrílico y texturas`).
-     - **Disponible (Status)**: Selecciona `Disponible` o `Vendido`.
-     - **Portada (Imagen Principal)**: Sube tu imagen en formato estándar (`.jpg`, `.jpeg` o `.png`).
-     - **Imágenes de Detalles**: Sube fotos adicionales de detalles.
-     - **Descripción**: Descripción de la obra.
-     - **Tags**: Palabras clave (por defecto `Acrílico`, `Texturas`).
-     - **Fecha**: Fecha de registro.
-   - Haz clic en **Publish** (Publicar) en la esquina superior derecha.
+#### 1. Acceder al CMS:
+- **En producción**: Abre `https://pablomsanala.github.io/carolina/admin/`
+- **En local**: Ejecuta `npm run dev` y abre `http://localhost:5173/carolina/admin/`
+
+#### 2. Identificación / Login:
+- **En producción**:
+  - Inicia sesión con tu cuenta de GitHub o mediante un **Personal Access Token (PAT)** de GitHub.
+  - *Permisos requeridos para el Token*: 
+    - **Fine-grained token** (recomendado): Seleccionar el repositorio `carolina`, con permisos `Contents: Read and write` y `Metadata: Read-only`.
+    - **Classic token**: Seleccionar el scope `repo`.
+- **En local**: Haz clic en **Work with Local Folder**, selecciona la carpeta raíz del proyecto y concede permisos de lectura/escritura al navegador.
+
+#### 3. Crear o editar la obra:
+1. En la barra lateral izquierda, entra en **Colección Obras**.
+2. Pulsa en **Nuevo Obras** (o selecciona una obra existente para editarla).
+3. Rellena los campos:
+   - **Título**: Nombre de la obra.
+   - **Slug**: Identificador único para la URL (ej: `rompiente-sur`, `nueva-obra`).
+   - **Técnica**: Técnica utilizada (ej: `Acrílico y texturas`).
+   - **Disponible (Status)**: Selecciona `Disponible` o `Vendido`.
+   - **Portada (Imagen Principal)**: Sube tu imagen en formato estándar (`.jpg`, `.jpeg` o `.png`).
+   - **Imágenes de Detalles**: Sube fotos de detalle o diferentes perspectivas (opcional).
+   - **Descripción**: Texto descriptivo de la obra.
+   - **Tags**: Etiquetas descriptivas (ej: `Acrílico`, `Texturas`, `Díptico`).
+   - **Fecha**: Fecha de creación/publicación.
+4. Haz clic en **Publish** (Publicar) en la esquina superior derecha.
 
 ---
 
-### ¿Qué ocurre por detrás? (Flujo de Automatización)
+#### 4. Automatización en segundo plano:
 
-Una vez que haces clic en **Publish** en el CMS, se activa de forma automática el siguiente pipeline:
+Al hacer clic en **Publish**, GitHub Actions ejecuta automáticamente el pipeline (`.github/workflows/optimize-and-deploy.yml`):
+- **Conversión AVIF**: Convierte automáticamente las imágenes JPG/PNG a `.avif` de alta compresión y elimina los archivos originales.
+- **Generación de Miniaturas**: Genera automáticamente una versión thumbnail optimizada en `.webp` (700px) a partir de la portada.
+- **Actualización de Base de Datos**: Actualiza las rutas en `public/data/obras/[slug].json` con las extensiones optimizadas.
+- **Compilación**: Agrupa y ordena todas las obras en el catálogo maestro `public/data/obras.json`.
+- **Despliegue**: Compila la web y la publica en `gh-pages` en pocos minutos.
 
-1. **Actualización del Repositorio**:
-   - Sveltia CMS sube las imágenes originales tal cual las has subido y crea un archivo individual en `public/data/obras/[slug].json` con los metadatos de la nueva obra, realizando un `commit` y un `push` a la rama `main` de tu repositorio de GitHub.
-2. **Optimización Automática (GitHub Actions)**:
-   - El push activa el workflow de GitHub Actions (`.github/workflows/optimize-and-deploy.yml`), que realiza los siguientes pasos en la nube:
-     - **Conversión AVIF**: Convierte de forma automática las imágenes subidas (`.jpg`, `.jpeg`, o `.png`) al formato comprimido de última generación **AVIF** para ahorrar espacio, y elimina los archivos PNG/JPG originales.
-     - **Generación de Miniaturas**: Genera automáticamente una miniatura optimizada en formato **WebP** de 700px de ancho a partir de la imagen de portada.
-     - **Actualización de Base de Datos**: Actualiza todas las referencias de las imágenes en tu archivo JSON del CMS para que apunten a los archivos `.avif` y `-thumb.webp` generados.
-     - **Compilación de Catálogo**: Ejecuta un script para recopilar y ordenar todos los JSON individuales de la carpeta `public/data/obras/` en el archivo maestro unificado `public/data/obras.json` utilizado por la web.
-     - **Confirmación de Cambios**: Vuelve a confirmar (`commit` y `push`) de forma automática estos archivos optimizados a la rama `main`.
-3. **Despliegue Automático**:
-   - Finalmente, el workflow compila el proyecto React (`npm run build`) y publica la versión final en la rama `gh-pages`, actualizando la página web en producción en pocos minutos de forma transparente.
+---
+
+### Método 2: Manual vía código (Avanzado)
+
+Si prefieres añadir obras manualmente sin usar el CMS:
+1. Crea un archivo JSON en `public/data/obras/<slug>.json` con la estructura requerida.
+2. Coloca las imágenes en `public/images/obras/`.
+3. Ejecuta el script de optimización y compilación:
+   ```bash
+   npm run optimize
+   ```
+4. Haz commit y push a la rama `main` o ejecuta `npm run build`.
